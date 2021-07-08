@@ -56,7 +56,6 @@ jobs:
     needs: tests
     steps:
       - name: Create Pull Request
-        id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.MY_TOKEN }}
