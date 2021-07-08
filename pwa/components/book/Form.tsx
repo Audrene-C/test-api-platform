@@ -77,7 +77,7 @@ export const Form: FunctionComponent<Props> = ({ book }) => {
                 id="_name"
                 value={values.name ?? ""}
                 type="text"
-                placeholder="A name property - this description will be available in the API documentation too."
+                placeholder=""
                 className={`form-control${
                   errors.name && touched.name ? " is-invalid" : ""
                 }`}

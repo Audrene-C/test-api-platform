@@ -3,42 +3,36 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=BookRepository::class)
  */
 #[ApiResource]
-class Book // The class name will be used to name exposed resources
+class Book
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private ?int $id = null;
+    private $id;
 
     /**
-     * A name property - this description will be available in the API documentation too.
-     *
-     * @ORM\Column
+     * @ORM\Column(type="string", length=255)
      */
-    #[Assert\NotBlank]
-    public string $name = '';
+    private $name;
 
     /**
-     *
-     * @ORM\Column
+     * @ORM\Column(type="string", length=255)
      */
-    #[Assert\NotBlank]
-    public string $author = '';
+    private $author;
 
     /**
-     *
-     * @ORM\Column
+     * @ORM\Column(type="date")
      */
-    public string $datePublished = '';
+    private $datePublished;
 
     public function getId(): ?int
     {
@@ -69,16 +63,15 @@ class Book // The class name will be used to name exposed resources
         return $this;
     }
 
-    public function getDatePublished(): ?string
+    public function getDatePublished(): ?\DateTimeInterface
     {
         return $this->datePublished;
     }
 
-    public function setDatePublished(string $datePublished): self
+    public function setDatePublished(\DateTimeInterface $datePublished): self
     {
         $this->datePublished = $datePublished;
 
         return $this;
     }
-
 }
