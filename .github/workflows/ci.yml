@@ -59,4 +59,4 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: master
+          base: master
